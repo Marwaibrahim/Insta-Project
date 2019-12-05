@@ -13,4 +13,10 @@ class ProfilesController extends Controller
             'user'=> $user,
         ]);
     }
+
+    public function edit(User $user)
+    {
+
+        return view('profiles.edit', compact('user'));
+    }
 }

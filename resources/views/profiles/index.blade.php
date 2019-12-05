@@ -9,10 +9,11 @@
       <div class="col-9 pt-5">
       <div class="d-flex justify-content-between align-items-baseline">
         <h1>{{$user ->username}}</h1>
-        <a href="#">Add new Post</a>
+        <a href="/p/create">Add new Post</a>
       </div>
+           <a href="/profile/{{user->id}}/edit">Edit Profile</a>
            <div class='d-flex'>
-                <div class="pr-5"><strong>153</strong> posts</div>
+           <div class="pr-5"><strong>{{ $user->posts->count() }}</strong> posts</div>
                 <div class="pr-5"><strong>23k</strong> followers</div>
                 <div class="pr-5"><strong>233</strong> following</div>
            </div>
@@ -22,16 +23,14 @@
         </div>
       </div>
     </div>
-    <div class="row p-2 ">
-        <div class="col-4">
-            <img src="https://instagram.fcai2-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/c0.29.804.804a/s640x640/73329016_500631560534931_6641163343711350786_n.jpg?_nc_ht=instagram.fcai2-1.fna.fbcdn.net&amp;_nc_cat=103&amp;oh=459a6e5c0267686203d264b28591cb85&amp;oe=5E89117F" class="w-60 h-50 ">
-        </div>
-        <div class="col-4">
-                <img src="https://instagram.fcai2-2.fna.fbcdn.net/v/t51.2885-15/e35/c127.0.496.496a/71842560_179815429869179_5569562397308320476_n.jpg?_nc_ht=instagram.fcai2-2.fna.fbcdn.net&amp;_nc_cat=111&amp;oh=decdc3cf86be72f28f96446dacb3d3d0&amp;oe=5E6CEDCC" class="w-60 h-50">
-        </div>
-        <div class="col-4">
-                <img src="https://instagram.fcai2-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/c2.0.745.745a/s640x640/73423634_2423788067939118_598762339110485792_n.jpg?_nc_ht=instagram.fcai2-1.fna.fbcdn.net&amp;_nc_cat=106&amp;oh=f46be22b216e694306b0a2fed330dd36&amp;oe=5E748490" class="w-60 h-50">
-        </div>
+    <div class="row pt-5">
+        @foreach($user->posts as $post)
+            <div class="col-4 pb-4">
+                <a href="/p/{{ $post->id }}">
+                    <img src="/storage/{{ $post->image }}" class="w-100">
+                </a>
+            </div>
+        @endforeach
     </div>
 
 </div>
